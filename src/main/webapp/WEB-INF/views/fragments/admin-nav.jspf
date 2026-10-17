@@ -1,0 +1,6 @@
+<%-- Sub-navigation shared by all administrator pages. --%>
+<nav class="admin-nav" aria-label="Administrator">
+    <a href="${ctx}/admin">Dashboard</a>
+    <a href="${ctx}/admin/restaurants">Restaurants</a>
+    <a href="${ctx}/admin/orders">Orders</a>
+</nav>

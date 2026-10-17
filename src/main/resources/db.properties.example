@@ -1,0 +1,12 @@
+# ---------------------------------------------------------------
+# Copy this file to  src/main/resources/db.properties  (same folder)
+# and put YOUR OWN MySQL details below. Do not commit db.properties.
+# ---------------------------------------------------------------
+db.host=localhost
+db.port=3306
+db.name=food_delivery_db
+db.username=YOUR_MYSQL_USERNAME
+db.password=YOUR_MYSQL_PASSWORD
+
+# Optional: extra JDBC URL parameters (this is the default if the line is omitted)
+# db.params=sslMode=DISABLED&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8

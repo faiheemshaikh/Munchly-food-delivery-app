@@ -1,0 +1,32 @@
+# Never commit your real database credentials
+src/main/resources/db.properties
+# target/
+# .settings/
+# .classpath
+# .project
+
+
+# Maven build output
+target/
+
+# Eclipse workspace files
+.metadata/
+.settings/
+.classpath
+.project
+
+# IntelliJ
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Operating system files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Food Delivery App</display-name>
+
+    <!-- JSTL number/date formatting always uses this locale (dot as decimal separator), not the browser's -->
+    <context-param>
+        <param-name>jakarta.servlet.jsp.jstl.fmt.locale</param-name>
+        <param-value>en_US</param-value>
+    </context-param>
+
+    <!-- ===== Session settings ===== -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>   <!-- JavaScript cannot read the session cookie -->
+            <!-- Add <secure>true</secure> when you serve the site over HTTPS -->
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>   <!-- never put the session id in the URL -->
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- ===== Filters =====
+         For filters, the ORDER of the <filter-mapping> elements below is the order they run in.
+         (That is why they are declared here and not with annotations.) -->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>com.tap.filter.EncodingFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>CsrfFilter</filter-name>
+        <filter-class>com.tap.filter.CsrfFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.tap.filter.AuthFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>com.tap.filter.AdminFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>CsrfFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Customer-only routes (some of these servlets are added in later phases) -->
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/profile</url-pattern>
+        <url-pattern>/cart</url-pattern>
+        <url-pattern>/cart/*</url-pattern>
+        <url-pattern>/checkout</url-pattern>
+        <url-pattern>/checkout/*</url-pattern>
+        <url-pattern>/orders</url-pattern>
+        <url-pattern>/orders/*</url-pattern>
+        <url-pattern>/order-confirmation</url-pattern>
+        <url-pattern>/logout</url-pattern>
+    </filter-mapping>
+
+    <!-- Administrator-only routes -->
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/admin</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+
+    <!-- ===== JSP rules ===== -->
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <url-pattern>*.jspf</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+            <scripting-invalid>true</scripting-invalid>   <!-- scriptlets are a compile error: JSTL/EL only -->
+        </jsp-property-group>
+    </jsp-config>
+
+    <!-- ===== Friendly error pages: users never see a stack trace ===== -->
+    <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/views/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/error.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/WEB-INF/views/error.jsp</location>
+    </error-page>
+</web-app>

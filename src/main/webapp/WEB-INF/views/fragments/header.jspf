@@ -1,0 +1,49 @@
+<%-- Included with the static include directive. The including page must declare the JSTL core taglib
+     (prefix c) and may set <c:set var="pageTitle" ...> before including this file. --%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><c:out value="${empty pageTitle ? 'TapBite' : pageTitle}" /> | TapBite</title>
+    <link rel="stylesheet" href="${ctx}/css/style.css">
+</head>
+<body data-placeholder="${ctx}/images/placeholder.svg">
+<header class="navbar">
+    <div class="navbar-inner">
+        <a class="brand" href="${ctx}/home">Tap<span>Bite</span></a>
+        <nav class="nav-links">
+            <a href="${ctx}/home">Home</a>
+            <c:choose>
+                <c:when test="${not empty sessionScope.userId}">
+                    <c:if test="${sessionScope.role == 'ADMIN'}">
+                        <a href="${ctx}/admin">Admin</a>
+                    </c:if>
+                    <a href="${ctx}/cart" class="cart-link">Cart<c:if test="${sessionScope.cartCount > 0}">
+                        <span class="cart-count"><c:out value="${sessionScope.cartCount}" /></span></c:if></a>
+                    <a href="${ctx}/orders">My Orders</a>
+                    <a href="${ctx}/profile">Hi, <c:out value="${sessionScope.username}" /></a>
+                    <form class="inline-form" method="post" action="${ctx}/logout">
+                        <input type="hidden" name="csrfToken" value="<c:out value='${csrfToken}' />">
+                        <button type="submit" class="btn btn-outline btn-small">Log out</button>
+                    </form>
+                </c:when>
+                <c:otherwise>
+                    <a href="${ctx}/login">Log in</a>
+                    <a class="btn btn-primary btn-small" href="${ctx}/register">Sign up</a>
+                </c:otherwise>
+            </c:choose>
+        </nav>
+    </div>
+</header>
+
+<%-- One-time messages set by servlets with SessionUtil.flashSuccess / flashError. Shown once, then removed. --%>
+<c:if test="${not empty sessionScope.flashSuccess}">
+    <div class="container flash"><div class="alert alert-success"><c:out value="${sessionScope.flashSuccess}" /></div></div>
+    <c:remove var="flashSuccess" scope="session" />
+</c:if>
+<c:if test="${not empty sessionScope.flashError}">
+    <div class="container flash"><div class="alert alert-error"><c:out value="${sessionScope.flashError}" /></div></div>
+    <c:remove var="flashError" scope="session" />
+</c:if>

@@ -1,0 +1,8 @@
+<footer class="footer">
+    <div class="container">
+        <p>&copy; TapBite &middot; A college project built with Java Servlets, JSP, JDBC and MySQL.</p>
+    </div>
+</footer>
+<script src="${ctx}/js/app.js"></script>
+</body>
+</html>
