@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.tap.dao.DAOException;
 import com.tap.dao.OrderDAO;
 import com.tap.dao.OrderItemDAO;
@@ -58,13 +62,38 @@ public class OrderServlet extends HttpServlet {
         }
     }
 
+//    private void showMyOrders(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        int userId = SessionUtil.getUserId(request);          // from the session, never from a parameter
+//        List<FoodOrder> orders = orderDAO.getOrdersByUserId(userId);
+//        request.setAttribute("orders", orders);
+//        request.getRequestDispatcher("/WEB-INF/views/my-orders.jsp").forward(request, response);
+//    }
+    
+    //new implementation to include representing img per order in my-order.jsp
     private void showMyOrders(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int userId = SessionUtil.getUserId(request);          // from the session, never from a parameter
+
+        int userId = SessionUtil.getUserId(request);
         List<FoodOrder> orders = orderDAO.getOrdersByUserId(userId);
+
+        Map<Integer, String> orderImages = new HashMap<>();
+
+        for (FoodOrder order : orders) {
+            orderImages.put(
+                order.getOrderId(),
+                orderDAO.getRepresentativeImageByOrderId(order.getOrderId())
+            );
+        }
+
         request.setAttribute("orders", orders);
-        request.getRequestDispatcher("/WEB-INF/views/my-orders.jsp").forward(request, response);
+        request.setAttribute("orderImages", orderImages);
+
+        request.getRequestDispatcher("/WEB-INF/views/my-orders.jsp")
+               .forward(request, response);
     }
+    
+    
 
     private void showOrder(HttpServletRequest request, HttpServletResponse response, String view)
             throws ServletException, IOException {

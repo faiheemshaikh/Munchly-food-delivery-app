@@ -68,13 +68,47 @@
                                                 <c:when test="${not empty sessionScope.userId}">
                                                     <%-- Posts to /cart (implemented in Phase 6). Only the id and quantity are sent;
                                                          the price is always re-read from the database on the server. --%>
-                                                    <form method="post" action="${ctx}/cart" class="inline-form">
+                                                    
+                                                    <%-- <form method="post" action="${ctx}/cart" class="inline-form">
                                                         <input type="hidden" name="csrfToken" value="<c:out value='${csrfToken}' />">
                                                         <input type="hidden" name="action" value="add">
                                                         <input type="hidden" name="menuId" value="${item.menuId}">
                                                         <input type="hidden" name="quantity" value="1">
                                                         <button type="submit" class="btn btn-primary btn-small">Add to cart</button>
-                                                    </form>
+                                                    </form> --%>
+                                                    
+                                                    <form method="post" action="${ctx}/cart" class="inline-form menu-add-form">
+                                                    	<input type="hidden" name="csrfToken" value="<c:out value='${csrfToken}' />">
+    													<input type="hidden" name="action" value="add">
+    													<input type="hidden" name="menuId" value="${item.menuId}">
+
+    													<div class="quantity-picker">
+        													<button type="button"
+                													class="quantity-btn"
+                													data-qty-change="-1"
+                													aria-label="Decrease quantity">−</button>
+
+        													<input type="number"
+               													name="quantity"
+              													class="quantity-input"
+               													value="1"
+               													min="1"
+               													max="20"
+               													step="1"
+               													required
+               													aria-label="Quantity">
+
+        													<button type="button"
+                													class="quantity-btn"
+                													data-qty-change="1"
+                													aria-label="Increase quantity">+</button>
+    													</div>
+
+    													<button type="submit" class="btn btn-primary btn-small">
+        													Add to cart
+    													</button>
+													</form>
+                                                    
                                                 </c:when>
                                                 <c:otherwise>
                                                     <a class="btn btn-outline btn-small" href="${loginUrl}">Log in to order</a>
@@ -91,5 +125,59 @@
         </c:choose>
     </div>
 </main>
+
+
+<script>
+document.addEventListener("click", function (event) {
+    const button = event.target.closest("[data-qty-change]");
+    if (!button) return;
+
+    const form = button.closest("form");
+    if (!form) return;
+
+    const input = form.querySelector(".quantity-input");
+    if (!input) return;
+
+    const current = Number.parseInt(input.value, 10);
+    const quantity = Number.isFinite(current) ? current : 1;
+    const delta = Number.parseInt(button.dataset.qtyChange, 10);
+
+    input.value = Math.max(1, Math.min(20, quantity + delta));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+});
+
+document.addEventListener("input", function (event) {
+    if (!event.target.matches(".quantity-input")) return;
+
+    const input = event.target;
+    const value = input.value.trim();
+
+    // Allow an empty value while the user is editing.
+    if (value === "") return;
+
+    const quantity = Number(value);
+    if (!Number.isInteger(quantity)) {
+        input.setCustomValidity("Enter a whole number from 1 to 20.");
+    } else if (quantity < 1 || quantity > 20) {
+        input.setCustomValidity("Quantity must be between 1 and 20.");
+    } else {
+        input.setCustomValidity("");
+    }
+});
+
+document.addEventListener("change", function (event) {
+    if (!event.target.matches(".quantity-input")) return;
+
+    const input = event.target;
+    if (input.value.trim() === "") return;
+
+    const quantity = Number(input.value);
+    if (Number.isInteger(quantity)) {
+        input.value = Math.max(1, Math.min(20, quantity));
+        input.setCustomValidity("");
+    }
+});
+</script>
+
 
 <%@ include file="/WEB-INF/views/fragments/footer.jspf" %>

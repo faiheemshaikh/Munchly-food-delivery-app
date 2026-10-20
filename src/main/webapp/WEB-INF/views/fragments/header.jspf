@@ -6,15 +6,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><c:out value="${empty pageTitle ? 'TapBite' : pageTitle}" /> | TapBite</title>
+    <title><c:out value="${empty pageTitle ? 'Munchly' : pageTitle}" /> | Munchly</title>
     <link rel="stylesheet" href="${ctx}/css/style.css">
 </head>
 <body data-placeholder="${ctx}/images/placeholder.svg">
 <header class="navbar">
     <div class="navbar-inner">
-        <a class="brand" href="${ctx}/home">Tap<span>Bite</span></a>
+        <a class="brand" href="${ctx}/home">Munch<span>ly</span></a>
         <nav class="nav-links">
-            <a href="${ctx}/home">Home</a>
+            <a href="${ctx}/home" class="${pageContext.request.servletPath eq '/home' ? 'active' : ''}">Home</a>
             <c:choose>
                 <c:when test="${not empty sessionScope.userId}">
                     <c:if test="${sessionScope.role == 'ADMIN'}">

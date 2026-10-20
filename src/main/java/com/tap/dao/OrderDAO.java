@@ -18,6 +18,9 @@ public interface OrderDAO {
 
     /** Returns the order or null. Does NOT check ownership; customer pages must use getOrderByIdAndUserId. */
     FoodOrder getOrderById(int orderId);
+    
+    /** Returns one representative menu image for each order. */
+    String getRepresentativeImageByOrderId(int orderId);
 
     /** Returns the order only if it belongs to this user, otherwise null (ownership check in SQL). */
     FoodOrder getOrderByIdAndUserId(int orderId, int userId);

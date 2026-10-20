@@ -6,7 +6,59 @@
 <%@ include file="/WEB-INF/views/fragments/header.jspf" %>
 
 <main>
-    <section class="hero hero-home">
+	
+<section class="hero hero-home">
+    <div class="container hero-layout">
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <span>GOOD FOOD, GOOD MOOD</span>
+                <span class="eyebrow-line"></span>
+            </div>
+
+            <h1>Your next favourite meal<br>
+                is just a few clicks away.</h1>
+
+            <p>
+                Discover the best local restaurants, explore diverse cuisines
+                and get your favourite food delivered to your door.
+            </p>
+
+            <c:if test="${not dbError and not empty restaurants}">
+                <div class="search-box">
+                    <span class="search-icon" aria-hidden="true">&#9906;</span>
+                    <input type="search"
+                           id="restaurant-search"
+                           placeholder="Search restaurants or cuisines..."
+                           aria-label="Search restaurants or cuisines"
+                           autocomplete="off">
+                </div>
+            </c:if>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+            <div class="hero-image hero-image-main">
+                <img src="${ctx}/images/restaurants/biryani-junction.jpg"
+                     alt="">
+            </div>
+
+            <div class="hero-image hero-image-secondary">
+                <img src="${ctx}/images/restaurants/dosa-corner.jpg"
+                     alt="">
+            </div>
+
+            <div class="hero-note">
+                <span class="hero-note-icon">&#127860;</span>
+                <span>
+                    <strong><c:out value="${fn:length(restaurants)}"/>+</strong>
+                    restaurants to explore
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+	
+
+    <%--<section class="hero hero-home">
         <div class="container">
             <h1>Hungry? Order from the best restaurants.</h1>
             <p>Browse menus, fill your cart and get food delivered to your door.</p>
@@ -17,7 +69,8 @@
                 </div>
             </c:if>
         </div>
-    </section>
+    </section> --%>
+    
 
     <div class="container">
         <c:choose>

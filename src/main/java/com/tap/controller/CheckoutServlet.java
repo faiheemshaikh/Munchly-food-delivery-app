@@ -59,9 +59,22 @@ public class CheckoutServlet extends HttpServlet {
             return;
         }
 
+//        User user = userDAO.getUserById(SessionUtil.getUserId(request));
+//        String defaultAddress = (user == null || user.getAddress() == null) ? "" : user.getAddress();
+//        showCheckout(request, response, view, defaultAddress);
+        
         User user = userDAO.getUserById(SessionUtil.getUserId(request));
-        String defaultAddress = (user == null || user.getAddress() == null) ? "" : user.getAddress();
+
+        String defaultAddress =
+                (user == null || user.getAddress() == null) ? "" : user.getAddress();
+
+//        String profilePhone =
+//                (user == null || user.getPhone() == null) ? "" : user.getPhone();
+
+//        request.setAttribute("profilePhone", profilePhone);
+
         showCheckout(request, response, view, defaultAddress);
+        
     }
 
     @Override
@@ -142,7 +155,16 @@ public class CheckoutServlet extends HttpServlet {
 
     private void showCheckout(HttpServletRequest request, HttpServletResponse response,
                               CartView view, String address) throws ServletException, IOException {
-        request.setAttribute("checkoutLines", view.getLines());
+        
+    	//new addition
+    	User user = userDAO.getUserById(SessionUtil.getUserId(request));
+
+        String profilePhone =
+                (user == null || user.getPhone() == null) ? "" : user.getPhone();
+        request.setAttribute("profilePhone", profilePhone);
+    	//
+        
+    	request.setAttribute("checkoutLines", view.getLines());
         request.setAttribute("checkoutTotal", view.getTotal());
         request.setAttribute("cartNotices", view.getNotices());
         request.setAttribute("cartRestaurantName", view.getRestaurantName());

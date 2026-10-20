@@ -108,6 +108,38 @@ public class OrderDAOImpl implements OrderDAO {
             throw new DAOException("Could not load orders", e);
         }
     }
+    
+    
+    @Override
+    public String getRepresentativeImageByOrderId(int orderId) {
+        String sql =
+            "SELECT m.image_path " +
+            "FROM order_items oi " +
+            "JOIN menu_items m ON m.menu_id = oi.menu_id " +
+            "WHERE oi.order_id = ? " +
+            "ORDER BY oi.order_item_id " +
+            "LIMIT 1";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, orderId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("image_path");
+                }
+                return null;
+            }
+
+        } catch (SQLException e) {
+            LOG.log(Level.SEVERE,
+                    "Could not load representative image for order " + orderId, e);
+            throw new DAOException("Could not load order image", e);
+        }
+    }
+    
+    
 
     @Override
     public List<FoodOrder> getAllOrders() {

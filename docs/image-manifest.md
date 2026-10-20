@@ -20,16 +20,16 @@ Use only images you are licensed to use (your own photos, or free-licence source
 | 8 | `green-bowl.jpg` | Interior or signature dish of a Healthy restaurant |
 | 9 | `sweet-tooth-bakery.jpg` | Interior or signature dish of a Desserts restaurant |
 | 10 | `taco-fiesta.jpg` | Interior or signature dish of a Mexican restaurant |
-| 11 | `sushi-sakura.jpg` | Interior or signature dish of a Japanese restaurant |
+| 11 | `sushi-sakura.jpg` | Interior or signature dish of a Japanese restaurant |...
 | 12 | `kebab-factory.jpg` | Interior or signature dish of a Kebabs restaurant |
-| 13 | `pune-misal-house.jpg` | Interior or signature dish of a Maharashtrian restaurant |
+| 13 | `pune-misal-house.jpg` | Interior or signature dish of a Maharashtrian restaurant | done
 | 14 | `chai-and-chaat.jpg` | Interior or signature dish of a Street Food restaurant |
 | 15 | `thali-treasures.jpg` | Interior or signature dish of a Gujarati / Thali restaurant |
 | 16 | `wrap-it-up.jpg` | Interior or signature dish of a Rolls & Wraps restaurant |
-| 17 | `pasta-palace.jpg` | Interior or signature dish of a Italian restaurant |
-| 18 | `coastal-catch.jpg` | Interior or signature dish of a Seafood restaurant |
-| 19 | `smoothie-station.jpg` | Interior or signature dish of a Beverages restaurant |
-| 20 | `mediterranean-mezze.jpg` | Interior or signature dish of a Mediterranean restaurant |
+| 17 | `pasta-palace.jpg` | Interior or signature dish of a Italian restaurant | done
+| 18 | `coastal-catch.jpg` | Interior or signature dish of a Seafood restaurant |  done
+| 19 | `smoothie-station.jpg` | Interior or signature dish of a Beverages restaurant | done
+| 20 | `mediterranean-mezze.jpg` | Interior or signature dish of a Mediterranean restaurant |done
 | 21 | `old-town-diner.jpg` | Interior or signature dish of a American restaurant |
 
 ## Food images → `src/main/webapp/images/food/`
@@ -38,7 +38,7 @@ One image per dish type, shared by every item that uses it.
 
 | File | Suggested subject | Used by |
 |---|---|---|
-| `biryani.jpg` | biryani | 4 item(s), e.g. Boiled Egg Biryani |
+| `biryani.jpg` | biryani | 4 item(s), e.g. Boiled Egg Biryani | done
 | `bowl.jpg` | bowl | 3 item(s), e.g. Chicken Katsu Bento |
 | `bread.jpg` | bread | 4 item(s), e.g. Bruschetta (4 pcs) |
 | `brownie.jpg` | brownie | 1 item(s), e.g. Walnut Brownie |
@@ -55,19 +55,19 @@ One image per dish type, shared by every item that uses it.
 | `dosa.jpg` | dosa | 3 item(s), e.g. Masala Dosa |
 | `falafel.jpg` | falafel | 1 item(s), e.g. Falafel Plate |
 | `fish.jpg` | fish | 4 item(s), e.g. Bombil Fry |
-| `fried-chicken.jpg` | fried chicken | 1 item(s), e.g. Chicken 65 |
-| `fries.jpg` | fries | 3 item(s), e.g. French Fries |
+| `fried-chicken.jpg` | fried chicken | 1 item(s), e.g. Chicken 65 | 
+| `fries.jpg` | fries | 3 item(s), e.g. French Fries |   .....
 | `gulab-jamun.jpg` | gulab jamun | 1 item(s), e.g. Gulab Jamun (2 pcs) |
 | `hummus.jpg` | hummus | 1 item(s), e.g. Hummus with Pita |
-| `ice-cream.jpg` | ice cream | 2 item(s), e.g. Matcha Ice Cream |
-| `idli.jpg` | idli | 1 item(s), e.g. Idli Sambar (3 pcs) |
+| `ice-cream.jpg` | ice cream | 2 item(s), e.g. Matcha Ice Cream |    done
+| `idli.jpg` | idli | 1 item(s), e.g. Idli Sambar (3 pcs) |             done
 | `kebab.jpg` | kebab | 4 item(s), e.g. Chicken Malai Tikka |
-| `manchurian.jpg` | manchurian | 1 item(s), e.g. Chicken Manchurian |
+| `manchurian.jpg` | manchurian | 1 item(s), e.g. Chicken Manchurian | done
 | `misal.jpg` | misal | 1 item(s), e.g. Kolhapuri Misal Pav |
 | `momos.jpg` | momos | 2 item(s), e.g. Veg Gyoza (5 pcs) |
 | `naan.jpg` | naan | 4 item(s), e.g. Butter Naan |
 | `nachos.jpg` | nachos | 1 item(s), e.g. Loaded Nachos |
-| `noodles.jpg` | noodles | 1 item(s), e.g. Veg Hakka Noodles |
+| `noodles.jpg` | noodles | 1 item(s), e.g. Veg Hakka Noodles | done
 | `paneer-masala.jpg` | paneer masala | 1 item(s), e.g. Paneer Butter Masala |
 | `paneer-tikka.jpg` | paneer tikka | 1 item(s), e.g. Paneer Tikka |
 | `pasta.jpg` | pasta | 3 item(s), e.g. Alfredo Pasta |
@@ -77,14 +77,14 @@ One image per dish type, shared by every item that uses it.
 | `salad.jpg` | salad | 4 item(s), e.g. Caesar Salad |
 | `samosa.jpg` | samosa | 1 item(s), e.g. Samosa (2 pcs) |
 | `sandwich.jpg` | sandwich | 3 item(s), e.g. Avocado Toast |
-| `smoothie.jpg` | smoothie | 8 item(s), e.g. Berry Blast |
-| `soup.jpg` | soup | 2 item(s), e.g. Hot and Sour Soup |
+| `smoothie.jpg` | smoothie | 8 item(s), e.g. Berry Blast |       done
+| `soup.jpg` | soup | 2 item(s), e.g. Hot and Sour Soup |          done
 | `sushi.jpg` | sushi | 2 item(s), e.g. California Roll (8 pcs) |
 | `taco.jpg` | taco | 2 item(s), e.g. Chicken Tacos (3 pcs) |
 | `tandoori-chicken.jpg` | tandoori chicken | 1 item(s), e.g. Tandoori Chicken (Half) |
 | `thali.jpg` | thali | 3 item(s), e.g. Gujarati Thali |
-| `upma.jpg` | upma | 3 item(s), e.g. Poha |
-| `vada.jpg` | vada | 1 item(s), e.g. Medu Vada (2 pcs) |
+| `upma.jpg` | upma | 3 item(s), e.g. Poha |                done
+| `vada.jpg` | vada | 1 item(s), e.g. Medu Vada (2 pcs) |   done
 | `vada-pav.jpg` | vada pav | 1 item(s), e.g. Vada Pav |
 | `wrap.jpg` | wrap | 7 item(s), e.g. Bean Burrito |
 
