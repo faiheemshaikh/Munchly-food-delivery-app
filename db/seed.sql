@@ -1,8 +1,5 @@
 -- =====================================================================
 -- seed.sql  |  Sample data for food_delivery_db
--- Run AFTER schema.sql, on a clean database.
--- No user accounts are seeded: register through the app (see README).
--- Image paths are relative to src/main/webapp (see docs/image-manifest.md).
 -- =====================================================================
 
 USE food_delivery_db;
