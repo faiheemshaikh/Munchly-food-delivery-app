@@ -1,7 +1,5 @@
 -- =====================================================================
 -- schema.sql  |  Food Delivery App  |  MySQL 8.0+
--- WARNING: the DROP TABLE lines delete existing data. Re-running this
--- file resets the database. Remove them if you want to keep your data.
 -- =====================================================================
 
 CREATE DATABASE IF NOT EXISTS food_delivery_db
@@ -9,13 +7,6 @@ CREATE DATABASE IF NOT EXISTS food_delivery_db
     COLLATE utf8mb4_unicode_ci;
 
 USE food_delivery_db;
-
--- Drop in reverse dependency order (children first)
-DROP TABLE IF EXISTS order_items;
-DROP TABLE IF EXISTS orders;
-DROP TABLE IF EXISTS menu_items;
-DROP TABLE IF EXISTS restaurants;
-DROP TABLE IF EXISTS users;
 
 -- ---------------------------------------------------------------------
 -- users
