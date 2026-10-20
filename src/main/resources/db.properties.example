@@ -1,7 +1,4 @@
 # ---------------------------------------------------------------
-# Copy this file to  src/main/resources/db.properties  (same folder)
-# and put YOUR OWN MySQL details below. Do not commit db.properties.
-# ---------------------------------------------------------------
 db.host=localhost
 db.port=3306
 db.name=food_delivery_db
