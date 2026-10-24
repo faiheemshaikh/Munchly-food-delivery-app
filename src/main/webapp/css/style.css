@@ -4527,3 +4527,173 @@ main:has(.menu-banner) .chip:hover {
     }
 }
 
+/* ===== Shared authentication pages ===== */
+
+.auth-page {
+    min-height: calc(100vh - 145px);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 24px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255 249 242 / 0%),
+            rgba(255 249 242 / 54%)
+        ),
+        url("../images/munchly-food-bg.png") center / cover no-repeat;
+}
+
+.auth-card {
+    width: min(100%, 440px);
+    box-sizing: border-box;
+    padding: 34px 32px 28px;
+
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(100, 65, 42, 0.12);
+    border-radius: 20px;
+    box-shadow: 0 14px 45px rgba(66, 39, 22, 0.13);
+}
+
+.auth-heading {
+    text-align: center;
+    margin-bottom: 26px;
+}
+
+.auth-eyebrow {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #f05a0a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.auth-heading h1 {
+    margin: 0 0 8px;
+    color: #48271d;
+    font-size: 29px;
+    line-height: 1.25;
+}
+
+.auth-heading p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth-form .form-group {
+    margin: 0;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #342820;
+}
+
+.auth-form input {
+    display: block;
+    width: 100%;
+    height: 44px;
+    box-sizing: border-box;
+    padding: 10px 13px;
+
+    font: inherit;
+    font-size: 14px;
+    color: #30251f;
+    background: #fff;
+
+    border: 1px solid #e4d9cf;
+    border-radius: 9px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-form input:focus {
+    border-color: #f05a0a;
+    box-shadow: 0 0 0 3px rgba(240, 90, 10, 0.11);
+}
+
+.auth-form input::placeholder {
+    color: #a49a91;
+}
+
+.auth-form .auth-submit {
+    min-height: 44px;
+    margin-top: 4px;
+    border: 0;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.auth-footer {
+    margin: 22px 0 0;
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: #f05a0a;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Keep the login page comfortable on mobile */
+
+@media (max-width: 600px) {
+    .auth-page {
+        min-height: auto;
+        padding: 28px 14px;
+        background-position: center;
+    }
+
+    .auth-card {
+        padding: 28px 20px 24px;
+        border-radius: 16px;
+    }
+
+    .auth-heading h1 {
+        font-size: 25px;
+    }
+}
+
+/* Short desktop screens */
+
+@media (min-width: 601px) and (max-height: 760px) {
+    .auth-page {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .auth-card {
+        padding-top: 24px;
+        padding-bottom: 22px;
+    }
+
+    .auth-heading {
+        margin-bottom: 18px;
+    }
+
+    .auth-form {
+        gap: 13px;
+    }
+
+    .auth-footer {
+        margin-top: 16px;
+    }
+}
+
